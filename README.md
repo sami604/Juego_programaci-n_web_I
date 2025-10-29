@@ -134,7 +134,4 @@ Desarrollado por Samantha Betanzo Bolaños
 - Comunidad de desarrolladores web por recursos y tutoriales
 
 
-
-⭐ Si te gustó este proyecto, ¡dale una estrella en GitHub!
-
-🎮 **¡Diviértete jugando!**
+🎮 **¡Diviértete jugando, animoo!**
