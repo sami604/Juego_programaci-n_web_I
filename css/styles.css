@@ -1,0 +1,229 @@
+/* ================================
+ ESTILOS GENERALES
+=================================== */
+
+/* Quita márgenes y rellenos por defecto de todos los elementos */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box; /* Hace que el padding y borde no afecten el tamaño total */
+}
+
+/* Estilo principal del cuerpo (fondo, fuente y alineación del contenido) */
+body {
+  font-family: 'Arial', sans-serif; /* Tipo de letra */
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); /* Fondo con degradado diagonal */
+  display: flex; /* Centra el contenedor */
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh; /* Altura mínima igual a la pantalla completa */
+  color: white; /* Color del texto */
+}
+
+/* ================================
+   🕹️ CONTENEDOR DEL JUEGO
+=================================== */
+
+.game-container {
+  text-align: center;
+  background: rgba(0, 0, 0, 0.7); /* Fondo semi-transparente oscuro */
+  padding: 30px;
+  border-radius: 20px; /* Bordes redondeados */
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.5); /* Sombra del contenedor */
+  max-width: 95vw; /* Ancho máximo adaptable */
+}
+
+/* ================================
+   🏁 ENCABEZADO Y ESTADÍSTICAS
+=================================== */
+
+.game-header {
+  margin-bottom: 20px; /* Espacio inferior */
+}
+
+/* Título principal del juego */
+h1 {
+  font-size: 2.5em;
+  margin-bottom: 10px;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5); /* Efecto de sombra en el texto */
+}
+
+/* Contenedor de las estadísticas (nivel, manzanas, puntaje, récord) */
+.stats {
+  display: flex;
+  justify-content: space-around;
+  gap: 20px;
+  margin-bottom: 20px;
+  font-size: 1.2em;
+  flex-wrap: wrap; /* Permite que se acomoden en varias líneas en pantallas pequeñas */
+}
+
+/* Cada cuadro de estadística individual */
+.stat-item {
+  background: rgba(255, 255, 255, 0.1); /* Fondo transparente */
+  padding: 10px 20px;
+  border-radius: 10px;
+  backdrop-filter: blur(10px); /* Efecto de vidrio difuminado */
+  min-width: 120px;
+}
+
+/* Valor numérico o indicador dentro de cada estadística */
+.stat-value {
+  font-size: 1.5em;
+  font-weight: bold;
+  color: #4CAF50; /* Verde para resaltar los números */
+}
+
+/* ================================
+   🎨 ÁREA DE JUEGO (CANVAS)
+=================================== */
+
+/* Lienzo donde se dibuja el juego */
+canvas {
+  border: 3px solid #fff;
+  border-radius: 10px;
+  box-shadow: 0 5px 20px rgba(0, 0, 0, 0.3);
+  display: block;
+  margin: 0 auto; /* Centrado */
+  max-width: 100%;
+  height: auto; /* Se adapta al ancho */
+}
+
+/* ================================
+   🕹️ INSTRUCCIONES Y NIVELES
+=================================== */
+
+/* Texto que explica los controles */
+.controls {
+  margin-top: 20px;
+  font-size: 0.9em;
+  opacity: 0.8; /* Hace que el texto sea un poco translúcido */
+}
+
+/* Caja con información del nivel actual */
+.level-info {
+  margin-top: 15px;
+  padding: 15px;
+  background: rgba(76, 175, 80, 0.2); /* Verde semitransparente */
+  border-radius: 10px;
+  border-left: 4px solid #4CAF50; /* Barra lateral verde */
+}
+
+/* ================================
+   💀 PANTALLAS: INICIO Y GAME OVER
+=================================== */
+
+/* Estilos base para ambas pantallas (ocultas por defecto) */
+.game-over, .start-screen {
+  display: none; /* No se muestran al inicio */
+  position: fixed; /* Centradas en pantalla */
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%); /* Alineación exacta al centro */
+  background: rgba(0, 0, 0, 0.95); /* Fondo oscuro opaco */
+  padding: 40px;
+  border-radius: 20px;
+  text-align: center;
+  z-index: 1000; /* Aparecen sobre todo */
+  max-width: 90vw;
+}
+
+/* Cuando tienen la clase .active se muestran con animación */
+.game-over.active, .start-screen.active {
+  display: block;
+  animation: fadeIn 0.3s ease-in; /* Animación de aparición */
+}
+
+/* Animación para que aparezcan suavemente */
+@keyframes fadeIn {
+  from { opacity: 0; transform: translate(-50%, -45%); }
+  to { opacity: 1; transform: translate(-50%, -50%); }
+}
+
+/* ================================
+   🟩 BOTONES (si se usan)
+=================================== */
+
+.btn {
+  background: #4CAF50;
+  color: white;
+  border: none;
+  padding: 15px 30px;
+  font-size: 1.1em;
+  border-radius: 10px;
+  cursor: pointer;
+  margin-top: 20px;
+  transition: all 0.3s;
+}
+
+/* Efecto al pasar el mouse */
+.btn:hover {
+  background: #45a049;
+  transform: scale(1.05);
+}
+
+/* ================================
+   🔊 BOTÓN DE SONIDO
+=================================== */
+
+.sound-toggle {
+  position: absolute; /* Fijado en una esquina */
+  top: 20px;
+  right: 20px;
+  font-size: 2em;
+  cursor: pointer;
+  user-select: none; /* Evita que se seleccione el ícono por error */
+  transition: transform 0.2s;
+}
+
+/* Efecto al pasar el mouse sobre el icono */
+.sound-toggle:hover {
+  transform: scale(1.1);
+}
+
+/* ================================
+   🏁 PANTALLA DE INICIO (DETALLES)
+=================================== */
+
+/* Título del inicio */
+.start-screen h2 {
+  font-size: 2.5em;
+  margin-bottom: 20px;
+  color: #4CAF50; /* Verde llamativo */
+}
+
+/* Texto explicativo del inicio */
+.start-screen p {
+  font-size: 1.2em;
+  margin: 10px 0;
+  line-height: 1.6;
+}
+
+/* ================================
+   ✨ ANIMACIONES DE PULSO
+=================================== */
+
+/* Aplica efecto parpadeante a textos (como "Presiona cualquier tecla") */
+.pulse {
+  animation: pulse 1.5s infinite;
+}
+
+/* Definición de la animación pulse */
+@keyframes pulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.5; } /* Se desvanece un poco en el medio */
+}
+
+/* ================================
+   📱 DISEÑO RESPONSIVO (MÓVILES)
+=================================== */
+
+@media (max-width: 768px) {
+  /* Reduce el tamaño del título */
+  h1 { font-size: 2em; }
+
+  /* Ajusta estadísticas y espaciados */
+  .stats { font-size: 1em; gap: 10px; }
+  .stat-item { padding: 8px 15px; min-width: 100px; }
+  .stat-value { font-size: 1.3em; }
+}

@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <!-- Configura la codificación para que acepte caracteres como ñ y acentos -->
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- Hace que el diseño sea adaptable a pantallas pequeñas (como celulares) -->
+
+  <title>Snake Game - 3 Niveles</title>
+  <!-- Título que aparece en la pestaña del navegador -->
+
+  <link rel="stylesheet" href="css/styles.css">
+  <!-- Enlace al archivo CSS que contiene los estilos del juego -->
+</head>
+<body>
+  <!-- Contenedor principal del juego -->
+  <div class="game-container">
+    
+    <!-- Botón para activar o desactivar el sonido -->
+    <div class="sound-toggle" onclick="toggleSound()">🔊</div>
+    
+    <!-- Encabezado del juego con título y estadísticas -->
+    <div class="game-header">
+      <h1>🐍 Snake Game</h1>
+
+      <!-- Contenedor de las estadísticas del juego -->
+      <div class="stats">
+
+        <!-- Nivel actual -->
+        <div class="stat-item">
+          <div>Nivel</div>
+          <div class="stat-value" id="level">1</div>
+        </div>
+
+        <!-- Contador de manzanas -->
+        <div class="stat-item">
+          <div>🍎 Manzanas</div>
+          <div class="stat-value" id="apples">0/10</div>
+        </div>
+
+        <!-- Puntaje actual -->
+        <div class="stat-item">
+          <div>🏆 Puntaje</div>
+          <div class="stat-value" id="score">0</div>
+        </div>
+
+        <!-- Récord máximo guardado -->
+        <div class="stat-item">
+          <div>⭐ Récord</div>
+          <div class="stat-value" id="highscore">0</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Lienzo (canvas) donde se dibuja el juego -->
+    <canvas width="600" height="600" id="game"></canvas>
+
+    <!-- Texto informativo que cambia según el nivel -->
+    <div class="level-info" id="levelInfo">
+      <strong>Nivel 1 - Modo Clásico:</strong> Come 10 manzanas para avanzar (Velocidad: Lenta)
+    </div>
+
+    <!-- Instrucciones de control -->
+    <div class="controls">
+      Usa las flechas ⬆️ ⬇️ ⬅️ ➡️ o WASD para moverte
+    </div>
+  </div>
+
+  <!-- Pantalla de inicio (se muestra antes de jugar) -->
+  <div class="start-screen active" id="startScreen">
+    <h2>🐍 Snake Game</h2>
+    <p>🎮 <strong>Objetivo:</strong> Come manzanas y crece sin chocarte</p>
+    <p>📊 <strong>3 Niveles de dificultad:</strong></p>
+    <p>• Nivel 1: Velocidad Lenta (10 manzanas)</p>
+    <p>• Nivel 2: Velocidad Media + Obstáculos (20 manzanas)</p>
+    <p>• Nivel 3: Velocidad Rápida + Portales (15 manzanas)</p>
+    
+    <!-- Texto animado que invita a iniciar -->
+    <p class="pulse" style="margin-top: 30px; font-size: 1.4em; color: #4CAF50;">
+      ⌨️ Presiona cualquier tecla para comenzar
+    </p>
+  </div>
+
+  <!-- Pantalla que aparece al perder el juego -->
+  <div class="game-over" id="gameOver">
+    <h2 style="font-size: 3em; margin-bottom: 20px;">💀 Game Over</h2>
+
+    <!-- Muestra el puntaje final -->
+    <p style="font-size: 1.5em; margin-bottom: 10px;">Puntaje Final: 
+      <span id="finalScore">0</span>
+    </p>
+
+    <!-- Muestra el nivel alcanzado -->
+    <p style="font-size: 1.2em; margin-bottom: 20px;">Nivel Alcanzado: 
+      <span id="finalLevel">1</span>
+    </p>
+
+    <!-- Texto que invita a reiniciar el juego -->
+    <p class="pulse" style="margin-top: 30px; font-size: 1.4em; color: #4CAF50;">
+      ⌨️ Presiona cualquier tecla de dirección para jugar de nuevo
+    </p>
+  </div>
+
+  <!-- Archivo de sonido del juego -->
+  <script src="audio/audio.js"></script>
+
+  <!-- Archivo principal con la lógica del juego -->
+  <script src="js/game.js"></script>
+</body>
+</html>
